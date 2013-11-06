@@ -2,8 +2,8 @@
   "project": {
     "projectSettingsVersion": "1.0",
     "creationData": {
-      "type": "Black Project",
-      "src": "blackProject",
+      "type": "Blank Project",
+      "src": "blankProject",
       "projectGuid": "452f45c5-c8ae-429f-85d6-2049a92d35ea",
       "lastModifiedDate": 1383473338313,
       "creationDate": 1383473338292
