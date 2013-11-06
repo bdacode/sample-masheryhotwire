@@ -5,19 +5,19 @@ var apiKey = 'your_api_key_here';
 
 // Check if valid API Key
 function checkKeyValidity() {
-	var url = 'http://api.hotwire.com/v1/deal/hotel?limit=1&dest=94103&distance=15&apikey=' + apiKey;
+    var url = 'http://api.hotwire.com/v1/deal/hotel?limit=1&dest=94103&distance=15&apikey=' + apiKey;
     // Docs: http://app-framework-software.intel.com/api2/index.html#$_get
     
     invalidKey = false;
-	keyTest = $.get(url, "GET", function(data) {});
-	keyTest.onreadystatechange = function() {
-		if (keyTest.readyState == 4) {
-			if (keyTest.status == 403) {
+    keyTest = $.get(url, "GET", function(data) {});
+    keyTest.onreadystatechange = function() {
+        if (keyTest.readyState == 4) {
+            if (keyTest.status == 403) {
                 invalidKeyAlert();
                 invalidKey = true;
-			}
-		}
-	}
+            }
+        }
+    }
 }
 
 function invalidKeyAlert() {
@@ -33,17 +33,17 @@ function searchDeals() {
         invalidKeyAlert();
         return false;
     }
-	var zip = $('#zip').val();
-	if (zip.length < 5) {
-		alert('Please provide a ZIP code.');
-		return false;
-	}
-	var url = 'http://api.hotwire.com/v1/deal/hotel?format=json&limit=10&distance=10&apikey=' + apiKey + '&dest=' + zip;
+    var zip = $('#zip').val();
+    if (zip.length < 5) {
+        alert('Please provide a ZIP code.');
+        return false;
+    }
+    var url = 'http://api.hotwire.com/v1/deal/hotel?format=json&limit=10&distance=10&apikey=' + apiKey + '&dest=' + zip;
 
     // Docs: http://app-framework-software.intel.com/api2/index.html#$_get
-	var apiCall = $.get(url, function(data) {
-		searchDealsCallback(data);
-	});
+    var apiCall = $.get(url, function(data) {
+        searchDealsCallback(data);
+    });
 }
 
 // The callback function that's executed after the API call is made above.
@@ -51,28 +51,27 @@ function searchDeals() {
 // and display as links.
 function searchDealsCallback(payload) {
     // Docs: http://app-framework-software.intel.com/api2/index.html#$_parseJSON
-	var data = $.parseJSON(payload);
+    var data = $.parseJSON(payload);
 
-	if (!data.Result[0]) {
-		alert('No hotel deals could be found there. Sorry!');
-		return false;
-	}
-	
-	// Clear out results div (from any previous searches)
-	$("#hotwire-results-output .deals").empty();
-	
+    if (!data.Result[0]) {
+        alert('No hotel deals could be found there. Sorry!');
+        return false;
+    }
+    
+    // Clear out results div (from any previous searches)
+    $("#hotwire-results-output .deals").empty();
+    
     var html = "<p>Results for hotel deals in " + $('#zip').val() + ":</p>";
     $("#hotwire-results-output .deals").append(html);
     
-	for (var x in data.Result) {
-		var foo;
-		var deal = data.Result[x];
-		var html = "<a href=\"" + deal.Url + "\");' target=\"_blank\">" + deal.Headline + 
+    for (var x in data.Result) {
+        var deal = data.Result[x];
+        var html = "<a href=\"" + deal.Url + "\");' target=\"_blank\">" + deal.Headline + 
             "</a>&nbsp;<img src='images/hwarrow.png' height=/></span><br /><br />";
-		$("#hotwire-results-output .deals").append(html);
-	}
-	
+        $("#hotwire-results-output .deals").append(html);
+    }
+    
     // Transition to 'search-results' panel
     // Docs: http://app-framework-software.intel.com/api2/index.html#$_ui_loadContent
-	$.ui.loadContent("#search-results", false, false, "slide");
+    $.ui.loadContent("#search-results", false, false, "slide");
 }
