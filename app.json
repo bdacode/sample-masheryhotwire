@@ -1,24 +1,14 @@
 {
-    "appname": "demo.masheryhotwire",
-    "apppreview": "true",
-    "articleUrl": "",
-    "description": "This demo App provides a way to see the Hotwire API in action. It's built using the Intel&reg; Cross Platform Development Kit (XDK).  The Intel XDK lets you create mobile apps for smartphones and tablets using standard web languages (HTML5, CSS, and JavaScript).",
-    "highlights": [
-        "demo",
-        "API",
-        "Mashery",
-		"Hotwire"
-    ],
-    "keywords": [
-        "demo",
-        "API",
-        "Mashery",
-		"Hotwire"
-    ],
-    "relname": "4.0.0",
-    "reponame": "sample-mashery-hotwire",
+    "reponame": "sample-masheryhotwire",
     "title": "Mashery Hotwire API",
     "tooltip": "A demo app that features the Hotwire API, part of the Mashery API Network",
-    "visible": "true"
+    "description": "This demo app provides a way to see the Hotwire API in action.",    
+    "articleUrl": "",    
+    "highlights": ["App Framework", "Web Services API"],
+    "keywords": ["App Framework", "Web Services API"],
+    "relname": "4.0.0",
+    "visible": "false",
+    "appname": "demo.masheryhotwire",
+    "apppreview": "false",
 }
 

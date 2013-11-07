@@ -6,6 +6,12 @@
         <meta name="apple-mobile-web-app-capable" content="yes">
         <meta http-equiv="Pragma" content="no-cache">
         <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+        <!--
+            Include xhr.js in your index.html when using web services that make cross origin requests
+            This file makes those requests successfully when testing your apps under the "TEST" tab with the 
+            Intel(R) App Preview mobile app.
+        -->
+        <script type="text/javascript" charset="utf-8" src="xhr.js"></script>
         <script type="text/javascript" language="javascript">
             // This event handler is fired when the JS libraries are ready
             function onDeviceReady() {
