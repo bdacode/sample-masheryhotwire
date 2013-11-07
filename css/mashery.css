@@ -1,0 +1,13 @@
+#img-mashery {
+    float:right;
+    margin-top: -2px;
+}
+
+#img-hotwire {
+    width: 120px;
+    margin-top: 5px;   
+}
+
+.img-inline {
+    display: inline;
+}

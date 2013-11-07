@@ -1,88 +1,81 @@
 <!DOCTYPE html>
-<!--HTML5 doctype-->
 <html>
-<head>
-<title>Hotwire API</title>
-<meta http-equiv="Content-type" content="text/html; charset=utf-8">
-
-<style type="text/css">
-* { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); -ms-touch-action:none;} 
-</style>
-	
-<!-- This app was developed using the Intel XDK JavaScript library  -->
-
-<script src='intelxdk.js'></script> 
-<script src='xhr.js'></script>
-
-
-<script src="aUX_ui.min.js"></script>
-<script src="aUX_web.all.min.js"></script>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-<script src="hotwire.js"></script>
-
-<script type="text/javascript">
-	/* This function runs once the page is loaded, but the library is not yet active */
-	var init = function() {};
-	window.addEventListener("load", init, false);
-
-	/* This code prevents users from dragging the page */
-	var preventDefaultScroll = function(event) {
-		event.preventDefault();
-		window.scroll(0, 0);
-		return false;
-	};
-	document.addEventListener('touchmove', preventDefaultScroll, false);
-
-	var AMUi="";
-	var onDeviceReady = function() {
-		
-		AMUi=new aUX.ui();
-		
-		check_keys();
-		
-		intel.xdk.device.hideSplashScreen();
-		
-	};
-	document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
-
-</script>
-
-<link rel="stylesheet" type="text/css" href="aUX_ui.css" /> 
-<link rel="stylesheet" type="text/css" href="style.css" /> 
-</head>
-<body>
-
-	<div title="Hotwire API" id="main" class="panel" selected="true">
-		<div id="flash"></div>
-		
-		<div id="header_images">
-			<img id="logo1" src="images/hotwire.png" style="width:90px;margin-top:7px;"/>
-			<img id="logo2" src="images/masherymade.png" style="float:right;"/>
-		</div>
-		
-		<p>The Hotwire APIs deliver hotel and rental car listing deals from across the world. The API is easy to use with very powerful 
-			sorting and filtering options. This sample app uses the Hotel Deals API, returning deals ranked by proximity.</p>
-
-		<p>Visit <a href="http://developer.hotwire.com" target="_blank">developer.hotwire.com</a> to get your free API key today.</p>
-
-		
-
-		<p style="text-align:center;margin-bottom:0;padding-bottom:0;">ZIP Code<input type="text" id="search" placeholder="Ex: 94103"/><br /><span style="font-size:9px;">Enter your five digit ZIP code</span></p>
-		<p style="text-align:center;"><button id="btnUser" ontouchstart="searchDeals();">Search Hotwire</button>
-
-
-		<div id="output">
-			<div class="output-inner" id="hotwire-output" style="display:none;">
-				<div class="deals">
-					
-				</div>
-			</div>
-
-
-		</div>
-	</div> 
-	
-</body>
-
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta http-equiv="Pragma" content="no-cache">
+        <script type="text/javascript" charset="utf-8" src="intelxdk.js"></script>
+        <script type="text/javascript" language="javascript">
+            // This event handler is fired when the JS libraries are ready
+            function onDeviceReady() {
+                // Hide splash screen now that the app is ready to run
+                intel.xdk.device.hideSplashScreen();
+                
+                setTimeout(function () {
+                    $.ui.launch();
+                }, 50);
+                
+                checkKeyValidity();
+            }
+            // Initial event handler to detect when Intel library is ready to roll
+            document.addEventListener("intel.xdk.device.ready", onDeviceReady, false);
+        </script>
+        <script type="text/javascript" src="js/appframework.min.js"></script>
+        <script type="text/javascript" src="js/appframework.ui.min.js"></script>
+        <script type="text/javascript" src="js/api.js"></script>
+        <script>
+            $.ui.autoLaunch = false;
+            $.ui.useOSThemes = false; 
+            $.ui.blockPageScroll();
+            $.ui.backButtonText = "Back";
+        </script>
+        <link href="css/mashery.css" rel="stylesheet" type="text/css">
+        <link href="css/icons.css" rel="stylesheet" type="text/css">
+        <link href="css/af.ui.css" rel="stylesheet" type="text/css">
+    </head>
+    <div id="afui" class="ios">
+        <div id="header"></div>
+        <div id="content" style="">
+            <div class="panel" title="Hotwire Demo" id="home" selected="selected" style="" data-footer="none">
+                <div class="grid">
+                    <div class="col2 img-inline">
+                        <img src="images/hotwire.png" id="img-hotwire">
+                    </div>
+                    <div class="col2 img-inline">
+                        <img src="images/masherymade.png" id="img-mashery">
+                    </div>
+                </div>
+                <div>
+                    <p>The Hotwire APIs deliver hotel and rental car listing deals from across the world. The API is easy to use with very 
+                        powerful sorting and filtering options. This sample app uses the Hotel Deals API, returning deals ranked by proximity.
+                    </p>
+                    <p>Visit <a href="http://developer.hotwire.com" target="_blank">developer.hotwire.com</a> to get your free API key today.</p>
+                </div>
+                <div>
+                    <label class="narrow-control label-inline" for="zip">ZIP Code</label>
+                    <input class="wide-control" placeholder="Ex: 94103" type="text" id="zip" />
+                </div>
+                <div style="text-align:center;">
+                    <!-- On button click, execute searchDeals function in api.js -->
+                    <a class="button widget uib_w_6 d-margins" data-uib="app_framework/button" 
+                        onclick="javascript:searchDeals();">Search Hotwire</a>
+                </div>
+            </div>
+            <div class="panel" title="Results" id="search-results" data-appbuilder-object="page" data-footer="none">
+                <div id="hotwire-results-header">
+                    <div class="col2 img-inline">
+                        <img src="images/hotwire.png" id="img-hotwire">
+                    </div>
+                    <div class="col2 img-inline">
+                        <img src="images/masherymade.png" id="img-mashery">
+                    </div>
+                </div>
+                
+                <div id="hotwire-results-output">
+                    <div class="deals"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 </html>
