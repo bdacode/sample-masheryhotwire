@@ -1,11 +1,20 @@
 #img-mashery {
     float:right;
     margin-top: -2px;
+	background: url(http://developer.hotwire.com/public/Mashery/images/masherymade.png) no-repeat 0 0;
+	height: 37px;
+	width: 90px;
+    border-style: none;
 }
 
 #img-hotwire {
-    width: 120px;
-    margin-top: 5px;   
+    background: url(http://developer.hotwire.com/public/Mashery/images/clients/hotwire/hotwire.gif) no-repeat 0 0;
+    background-size: 165px auto;
+    left: 0px;
+    width: 165px;
+    height: 33px;
+    margin-top: 5px;
+    border-style: none;
 }
 
 .img-inline {

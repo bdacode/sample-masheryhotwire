@@ -1,6 +1,6 @@
 // ********************SET YOUR API KEY HERE*******************
 // Insert your Hotwire API Key here. README for more info.
-var apiKey = 'your_api_key_here';
+var apiKey = 'PLACE-YOUR-API-KEY-HERE';
 // ************************************************************
 
 // Check if valid API Key
