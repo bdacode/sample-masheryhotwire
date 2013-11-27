@@ -1,13 +1,13 @@
 {
     "reponame": "sample-masheryhotwire",
-    "title": "Mashery Hotwire API",
+    "title": "Mashery Hotwire App",
     "tooltip": "A demo app that features the Hotwire API, part of the Mashery API Network",
     "description": "This demo app provides a way to see the Hotwire API in action.",    
-    "articleUrl": "",    
+    "articleUrl": "http://software.intel.com/html5/articles/integrating-apis-with-xdk-hotwire-sample-app",    
     "highlights": ["App Framework", "Web Services API"],
     "keywords": ["App Framework", "Web Services API"],
     "relname": "4.0.0",
-    "visible": "false",
+    "visible": "true",
     "appname": "demo.masheryhotwire",
     "apppreview": "false",
 }
